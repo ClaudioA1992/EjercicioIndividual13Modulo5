@@ -15,30 +15,59 @@ class MainActivity : AppCompatActivity() {
 }
 
 fun main() {
-    println("Ingrese dos números")
-    try {
-        var numero1: Double = readLine()!!.toDouble()
-        var numero2: Float = readLine()!!.toFloat()
-        suma(numero1, numero2)
-    } catch(e: Exception) {
-        println("Error en ingreso de números: " + e)
+
+    fun ejercicioA () {
+        println("Ingrese dos números")
+        try {
+            var numero1: Double = readLine()!!.toDouble()
+            var numero2: Float = readLine()!!.toFloat()
+            suma(numero1, numero2)
+        } catch(e: Exception) {
+            println("Error en ingreso de números: " + e)
+        }
+
+        println("Ingrese un número a redondear")
+        try {
+            var numero: Double = readLine()!!.toDouble()
+            redondeo(numero)
+        } catch (e: Exception) {
+            println(e)
+        }
+
+        println("Ingrese un número a mostrar como euro")
+        try {
+            var numero: Double = readLine()!!.toDouble()
+            muestraResultado(numero)
+        } catch (e: Exception) {
+            println("Número con error: " + e)
+        }
     }
 
-    println("Ingrese un número a redondear")
-    try {
-        var numero: Double = readLine()!!.toDouble()
-        redondeo(numero)
-    } catch (e: Exception) {
-        println(e)
+    fun ejercicioB() {
+        println("Ingrese cantidad de heroes a ingresar: ")
+        var cant: Int = readln().toInt()
+        var heroes = mutableListOf<Heroe>()
+        while(cant != 0){
+            print("Nombre: ")
+            var nombre = readln()
+            print("Publisher: ")
+            var publisher = readln()
+            println("Nombre real: ")
+            var realName = readln()
+            println("Foto: ")
+            var photo = readln()
+            var heroe: Heroe = Heroe(nombre, publisher, realName, photo)
+            heroes.add(heroe)
+            cant--
+        }
+        for(heroe in heroes) {
+            println(heroe)
+        }
     }
 
-    println("Ingrese un número a mostrar como euro")
-    try {
-        var numero: Double = readLine()!!.toDouble()
-        muestraResultado(numero)
-    } catch (e: Exception) {
-        println("Número con error: " + e)
-    }
+    ejercicioB()
+    ejercicioB()
+
 }
 
 fun suma(numero1: Double, numero2: Float) : Double {
@@ -63,3 +92,9 @@ fun muestraResultado(numero: Double) : String {
 
 }
 
+data class Heroe(
+    val superHero: String,
+    val publisher: String,
+    val realName: String,
+    var photo: String
+)
