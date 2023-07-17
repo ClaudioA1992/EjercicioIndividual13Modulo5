@@ -98,3 +98,4 @@ data class Heroe(
     val realName: String,
     var photo: String
 )
+
